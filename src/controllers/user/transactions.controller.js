@@ -11,7 +11,9 @@ let transactionsFunction = async (req, res) => {
   let decode = jwt.decode(token, token_secret);
 
   try {
-    let transact = await Account.find({ userId: decode._id });
+    let transact = await Account.find({ userId: decode._id }).sort({
+      createdAt: -1,
+    });
     return res.status(200).send({ transactions: transact });
   } catch (error) {
     return res.status(400).send({ message: "Something went wrong" });
