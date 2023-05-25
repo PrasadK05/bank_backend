@@ -11,6 +11,7 @@ const logoutFunction = require("./controllers/auth/logout.controller");
 
 // imported routes
 const userRoute = require("./routes/user.route");
+const bankerRoute = require("./routes/banker.route");
 
 const PORT = process.env.PORT;
 
@@ -29,6 +30,7 @@ app.get("/logout", logoutFunction);
 
 // Routes
 app.use("/user", userRoute);
+app.use("/banker", bankerRoute);
 
 app.get("/", (req, res) => {
   res.send("Banks Backend");
